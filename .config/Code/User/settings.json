@@ -1,10 +1,10 @@
 {
     "workbench.colorTheme": "Catppuccin Mocha",
-    "workbench.iconTheme": "vscode-icons",
-    "workbench.productIconTheme": "icons-carbon",
+    "workbench.iconTheme": "catppuccin-mocha",
     "[python]": {
         "editor.formatOnType": true
     },
+    "typescript.preferences.importModuleSpecifier": "non-relative",
     "window.restoreWindows": "none",
     "workbench.startupEditor": "none",
     "terminal.integrated.fontFamily": "FiraCode Nerd Font Mono",
