@@ -1,0 +1,16 @@
+{
+    "workbench.colorTheme": "Catppuccin Mocha",
+    "workbench.iconTheme": "vscode-icons",
+    "workbench.productIconTheme": "icons-carbon",
+    "[python]": {
+        "editor.formatOnType": true
+    },
+    "window.restoreWindows": "none",
+    "workbench.startupEditor": "none",
+    "terminal.integrated.fontFamily": "FiraCode Nerd Font Mono",
+    "editor.tabSize": 2,
+    "editor.fontFamily": "FiraCode Nerd Font Mono",
+    "editor.fontLigatures": true,
+    "terminal.integrated.persistentSessionReviveProcess": "never",
+    "terminal.integrated.enablePersistentSessions": false
+  }
