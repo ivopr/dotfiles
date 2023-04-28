@@ -29,8 +29,8 @@ else
 fi
 
 # Update and install dependencies
-if command -v paru &>/dev/null; then
-  paru -Syu base-devel qtile ttf-firacode-nerd python-psutil pywal-git picom-jonaburg-fix dunst zsh starship brightnessctl alacritty htop flameshot ncspot-bin roficlip rofi ranger cava pavucontrol git qt5-graphicaleffects qt5-quickcontrols2 qt5-svg --noconfirm  --needed
+if command -v paru &>/dev/null && ! command -v ncspot &>/dev/null; then
+  paru -Syu base-devel qtile ttf-firacode-nerd ttf-fira-code python-psutil pywal-git picom-jonaburg-fix dunst zsh starship brightnessctl alacritty htop flameshot ncspot-bin roficlip rofi ranger cava pavucontrol git qt5-graphicaleffects qt5-quickcontrols2 qt5-svg --noconfirm  --needed
   if ! is_installed sddm; then
     paru -S sddm
   fi
@@ -51,7 +51,7 @@ fi
 
 # Make Backup
 echo "Backing up the current configs. All the backed up files will be available at ~/.config.bak"
-if [ ! -d "~/.config.bak" ]; then
+if [ ! -d ~/.config.bak ]; then
   mkdir ~/.config.bak
 fi
 for folder in .config/*; do

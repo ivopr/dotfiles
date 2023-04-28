@@ -180,7 +180,7 @@ screens = [
                     background='#0F1212',
                     foreground='#607767',
                     fmt='{}',
-                    font="JetBrains Mono Bold",
+                    font="Fira Code Bold",
                 ),
 
 
@@ -192,7 +192,7 @@ screens = [
                 widget.WindowName(
                     background = '#202222',
                     format = "{name}",
-                    font='JetBrains Mono Bold',
+                    font='Fira Code Bold',
                     foreground='#607767',
                     empty_group_string = 'Desktop',
 
@@ -238,7 +238,7 @@ screens = [
                     background='#202222',
                     format='{MemUsed: .0f}{mm}',
                     foreground='#607767',
-                    font="JetBrains Mono Bold",
+                    font="Fira Code Bold",
                     fontsize=13,
                     update_interval=5,
                 ),
@@ -262,7 +262,7 @@ screens = [
 
 
                 widget.Battery(
-                    font='JetBrains Mono Bold',
+                    font='Fira Code Bold',
                     background='#202222',
                     foreground='#607767',
                     format='{percent:2.0%}',
@@ -280,11 +280,12 @@ screens = [
                 ),
 
                 widget.Volume(
-                    font='JetBrainsMono Nerd Font',
+                    font='Fira Code Nerd',
                     theme_path='~/.config/qtile/Assets/Volume/',
                     emoji=True,
                     fontsize=13,
                     background='#202222',
+                    padding=2
                 ),
 
 
@@ -295,7 +296,7 @@ screens = [
 
 
                 widget.Volume(
-                    font='JetBrains Mono Bold',
+                    font='Fira Code Bold',
                     background='#202222',
                     foreground='#607767',
                 ),
@@ -319,7 +320,7 @@ screens = [
                     format='%I:%M %p',
                     background='#0F1212',
                     foreground='#607767',
-                    font="JetBrains Mono Bold",
+                    font="Fira Code Bold",
                     fontsize=13,
                 ),
 
