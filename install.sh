@@ -30,8 +30,8 @@ fi
 
 # Update and install dependencies
 if command -v paru &>/dev/null; then
-  paru -Syu base-devel qtile python-psutil pywal-git picom-jonaburg-fix dunst zsh starship mpd ncmpcpp playerctl brightnessctl alacritty pfetch htop flameshot thunar roficlip rofi ranger cava pulseaudio pavucontrol neovim vim git --noconfirm  --needed
-  if ! is_installed lightdm && ! is_installed sddm; then
+  paru -Syu base-devel qtile ttf-firacode-nerd python-psutil pywal-git picom-jonaburg-fix dunst zsh starship brightnessctl alacritty htop flameshot ncspot-bin roficlip rofi ranger cava pavucontrol git qt5-graphicaleffects qt5-quickcontrols2 qt5-svg --noconfirm  --needed
+  if ! is_installed sddm; then
     paru -S sddm
   fi
 fi
@@ -40,31 +40,49 @@ fi
 [[ "$(awk -F: -v user="$USER" '$1 == user {print $NF}' /etc/passwd) " =~ "zsh " ]] || chsh -s $(which zsh)
 
 # Install Zsh plugins
-[[ "${plugins[*]} " =~ "zsh-autosuggestions" ]] || git clone https://github.com/zsh-users/zsh-autosuggestions ~/.config/zsh/zsh-autosuggestions
-[[ "${plugins[*]} " =~ "zsh-syntax-highlighting " ]] || git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ~/.config/zsh/zsh-syntax-highlighting
+if [ ! -d "$HOME/.config/zsh/zsh-autosuggestions" ]; then
+  git clone https://github.com/zsh-users/zsh-autosuggestions ~/.config/zsh/zsh-autosuggestions
+fi
+
+if [ ! -d "$HOME/.config/zsh/zsh-syntax-highlighting" ]; then
+  git clone https://github.com/zsh-users/zsh-syntax-highlighting ~/.config/zsh/zsh-syntax-highlighting
+fi
+
 
 # Make Backup
-echo "Backing up the current configs. All the backeup files will be available at ~/.cozy.bak"
-mkdir ~/.cozy.bak
+echo "Backing up the current configs. All the backed up files will be available at ~/.config.bak"
+if [ ! -d "~/.config.bak" ]; then
+  mkdir ~/.config.bak
+fi
 for folder in .config/*; do
   rel=$(echo $folder | rev | cut -d/ -f1 | rev)
-  if [ -d ~/.config/$rel ]; then
-    echo "Backing up ~/.config/$rel"
-    cp -r ~/.config/$rel ~/.cozy.bak
-    echo "Backed up ~/.config/$rel" successfully.
-    echo "Removing old config for $rel"
-    rm -rf ~/.config/$rel
-    echo "Copying new config for $rel"
-    cp -r .config/$rel ~/.config
+  if [ $rel = "Code" ]; then
+      echo "Backing up ~/.config/$rel"
+      cp ~/.config/$rel/User/keybindings.json ~/.config.bak/$rel/User/keybindings.json
+      cp ~/.config/$rel/User/settings.json ~/.config.bak/$rel/User/settings.json
+      rm -rf ~/.config/$rel/User/keybindings.json
+      rm -rf ~/.config/$rel/User/settings.json
+
+      echo "Copying new config for $rel"
+      cp .config/$rel/User/keybindings.json ~/.config/$rel/User/keybindings.json
+      cp .config/$rel/User/settings.json ~/.config/$rel/User/settings.json
   else
-    echo "Folder ~/.config/$rel doesn't exist"
+    echo "Backing up ~/.config/$rel"
+    cp -r ~/.config/$rel ~/.config.bak
+    rm -rf ~/.config/$rel
     echo "Copying new config for $rel"
     cp -r .config/$rel ~/.config
   fi
 done
 
+cp .zshrc ~/.zshrc
 
-cp -R ./Fonts/*/ttf ~/.local/share/fonts/
+if [ ! -f "/etc/sddm.conf" ]; then
+  sudo mkdir -p /usr/share/sddm/themes
+  sudo tar -xzvf ./sugar-candy.tar.gz -C /usr/share/sddm/themes
+
+  sudo cp sddm.conf /etc/sddm.conf
+fi
 
 # Enable and start SDDM
 if is_installed sddm; then
