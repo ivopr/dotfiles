@@ -3,8 +3,6 @@ HISTFILE=~/.cache/zsh
 HISTSIZE=10000
 SAVEHIST=10000
 
-export VOLTA_HOME="$HOME/.volta"
-export PATH="$VOLTA_HOME/bin:$PATH"
 export PATH="$HOME/.local/bin:$PATH"
 
 # Autosuggestions: https://github.com/zsh-users/zsh-autosuggestions
