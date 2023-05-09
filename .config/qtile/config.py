@@ -71,7 +71,7 @@ keys = [
 
 # █▀▀ █▀█ █▀█ █░█ █▀█ █▀
 # █▄█ █▀▄ █▄█ █▄█ █▀▀ ▄█
-groups = [Group(f"{i+1}", label="•") for i in range(4)]
+groups = [Group(f"{i+1}", label="󰏃") for i in range(5)]
 
 for i in groups:
     keys.extend(
@@ -143,7 +143,7 @@ screens = [
                 ),
 
                 widget.GroupBox(
-                    fontsize=24,
+                    fontsize=12,
                     borderwidth=3,
                     highlight_method='block',
                     active='#607767',
