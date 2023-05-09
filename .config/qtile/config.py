@@ -13,9 +13,9 @@
 from libqtile import bar, layout, widget, hook, qtile
 from libqtile.config import Click, Drag, Group, Key, Match, hook, Screen, Rule
 from libqtile.lazy import lazy
-from libqtile.utils import guess_terminal
-from libqtile.dgroups import simple_key_binder
-from time import sleep
+from os import path
+
+cwdir = path.dirname(__file__)
 
 mod = "mod4"
 terminal = "alacritty"
@@ -105,7 +105,6 @@ layouts = [
 ]
 
 
-
 widget_defaults = dict(
     font="sans",
     fontsize=12,
@@ -132,18 +131,18 @@ screens = [
                 ),
 
                 widget.Image(
-                    filename='~/.config/qtile/Assets/launch_Icon.png',
+                    filename=f'{cwdir}/Assets/launch_Icon.png',
                     margin=2,
                     background='#0F1212',
-                    mouse_callbacks={"Button1":power},
+                    mouse_callbacks={"Button1": power},
                 ),
 
                 widget.Image(
-                    filename='~/.config/qtile/Assets/6.png',
+                    filename=f'{cwdir}/Assets/6.png',
                 ),
 
                 widget.GroupBox(
-                    fontsize=12,
+                    fontsize=10,
                     borderwidth=3,
                     highlight_method='block',
                     active='#607767',
@@ -167,12 +166,12 @@ screens = [
                 ),
 
                 widget.Image(
-                    filename='~/.config/qtile/Assets/5.png',
+                    filename=f'{cwdir}/Assets/5.png',
                 ),
 
 
                 widget.Image(
-                    filename='~/.config/qtile/Assets/layout.png',
+                    filename=f'{cwdir}/Assets/layout.png',
                     background="#0F1212"
                 ),
 
@@ -185,7 +184,7 @@ screens = [
 
 
                 widget.Image(
-                    filename='~/.config/qtile/Assets/4.png',
+                    filename=f'{cwdir}/Assets/4.png',
                 ),
 
 
@@ -200,7 +199,7 @@ screens = [
 
 
                 widget.Image(
-                    filename='~/.config/qtile/Assets/3.png',
+                    filename=f'{cwdir}/Assets/3.png',
                 ),
 
 
@@ -218,12 +217,12 @@ screens = [
 
 
                 widget.Image(
-                    filename='~/.config/qtile/Assets/6.png',
+                    filename=f'{cwdir}/Assets/6.png',
                     background='#202222',
                 ),
 
                 widget.Image(
-                    filename='~/.config/qtile/Assets/Misc/ram.png',
+                    filename=f'{cwdir}/Assets/Misc/ram.png',
                     background='#202222',
                 ),
 
@@ -244,7 +243,7 @@ screens = [
                 ),
 
                 widget.Image(
-                    filename='~/.config/qtile/Assets/2.png',
+                    filename=f'{cwdir}/Assets/2.png',
                 ),
 
 
@@ -255,7 +254,7 @@ screens = [
 
 
                 widget.BatteryIcon(
-                    theme_path='~/.config/qtile/Assets/Battery/',
+                    theme_path=f'{cwdir}/Assets/Battery/',
                     background='#202222',
                     scale=1,
                 ),
@@ -270,7 +269,7 @@ screens = [
 
 
                 widget.Image(
-                    filename='~/.config/qtile/Assets/2.png',
+                    filename=f'{cwdir}/Assets/2.png',
                 ),
 
 
@@ -281,7 +280,7 @@ screens = [
 
                 widget.Volume(
                     font='Fira Code Nerd',
-                    theme_path='~/.config/qtile/Assets/Volume/',
+                    theme_path=f'{cwdir}/Assets/Volume/',
                     emoji=True,
                     fontsize=13,
                     background='#202222',
@@ -303,13 +302,13 @@ screens = [
 
 
                 widget.Image(
-                    filename='~/.config/qtile/Assets/5.png',
+                    filename=f'{cwdir}/Assets/5.png',
                     background='#202222',
                 ),
 
 
                 widget.Image(
-                    filename='~/.config/qtile/Assets/Misc/clock.png',
+                    filename=f'{cwdir}/Assets/Misc/clock.png',
                     background='#0F1212',
                     margin_y=6,
                     margin_x=5,
@@ -386,7 +385,7 @@ import subprocess
 # stuff
 @hook.subscribe.startup_once
 def autostart_once():
-    home = os.path.expanduser('~/.config/qtile/autostart_once.sh')
+    home = os.path.expanduser(f'{cwdir}/autostart_once.sh')
     subprocess.Popen([home])
 
 @hook.subscribe.client_new
