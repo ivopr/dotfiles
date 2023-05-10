@@ -124,6 +124,8 @@ def power():
 # █▄█ █▀█ █▀▄
 screens = [
     Screen(
+        wallpaper=f"{cwdir}/Assets/wallpaper.jpg",
+        wallpaper_mode="fill",
         top=bar.Bar(
             [
 				widget.Spacer(length=15,

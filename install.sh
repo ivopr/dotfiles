@@ -29,11 +29,8 @@ else
 fi
 
 # Update and install dependencies
-if command -v paru &>/dev/null && ! command -v ncspot &>/dev/null; then
-  paru -Syu base-devel qtile ttf-firacode-nerd ttf-fira-code python-psutil pywal-git picom-jonaburg-fix dunst zsh starship brightnessctl alacritty htop flameshot ncspot-bin roficlip rofi ranger cava pavucontrol git qt5-graphicaleffects qt5-quickcontrols2 qt5-svg --noconfirm  --needed
-  if ! is_installed sddm; then
-    paru -S sddm
-  fi
+if command -v paru &>/dev/null; then
+  paru -Syu base-devel qtile ttf-firacode-nerd ttf-fira-code python-psutil picom-jonaburg-fix dunst zsh starship brightnessctl alacritty htop flameshot ncspot-bin rofi ranger cava gnome-keyring lxappearance pavucontrol github-cli google-chrome visual-studio-code-bin upower qt5-graphicaleffects alsa-utils sddm imagemagick qt5-quickcontrols2 xz qt5-svg --noconfirm --needed
 fi
 
 # Check and set Zsh as the default shell
@@ -49,6 +46,9 @@ if [ ! -d "$HOME/.config/zsh/zsh-syntax-highlighting" ]; then
 fi
 
 
+cp -r .icons $HOME
+cp -r .themes $HOME
+
 # Make Backup
 echo "Backing up the current configs. All the backed up files will be available at ~/.config.bak"
 if [ ! -d ~/.config.bak ]; then
@@ -56,17 +56,7 @@ if [ ! -d ~/.config.bak ]; then
 fi
 for folder in .config/*; do
   rel=$(echo $folder | rev | cut -d/ -f1 | rev)
-  if [ $rel = "Code" ]; then
-      echo "Backing up ~/.config/$rel"
-      cp ~/.config/$rel/User/keybindings.json ~/.config.bak/$rel/User/keybindings.json
-      cp ~/.config/$rel/User/settings.json ~/.config.bak/$rel/User/settings.json
-      rm -rf ~/.config/$rel/User/keybindings.json
-      rm -rf ~/.config/$rel/User/settings.json
-
-      echo "Copying new config for $rel"
-      cp .config/$rel/User/keybindings.json ~/.config/$rel/User/keybindings.json
-      cp .config/$rel/User/settings.json ~/.config/$rel/User/settings.json
-  else
+  if [ ! $rel = "Code" ]; then
     echo "Backing up ~/.config/$rel"
     cp -r ~/.config/$rel ~/.config.bak
     rm -rf ~/.config/$rel
@@ -79,7 +69,7 @@ cp .zshrc ~/.zshrc
 
 if [ ! -f "/etc/sddm.conf" ]; then
   sudo mkdir -p /usr/share/sddm/themes
-  sudo tar -xzvf ./sugar-candy.tar.gz -C /usr/share/sddm/themes
+  sudo xz -xf ./sugar-candy.tar.gz -C /usr/share/sddm/themes
 
   sudo cp sddm.conf /etc/sddm.conf
 fi
