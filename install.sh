@@ -30,7 +30,11 @@ fi
 
 # Update and install dependencies
 if command -v paru &>/dev/null; then
-  paru -Syu base-devel qtile ttf-firacode-nerd ttf-fira-code python-psutil picom-jonaburg-fix dunst zsh starship brightnessctl alacritty htop flameshot ncspot-bin rofi ranger cava gnome-keyring lxappearance pavucontrol github-cli google-chrome visual-studio-code-bin upower qt5-graphicaleffects alsa-utils sddm imagemagick qt5-quickcontrols2 xz qt5-svg --noconfirm --needed
+  paru -Syu base-devel qtile ttf-firacode-nerd ttf-fira-code python-psutil picom-jonaburg-fix dunst zsh starship brightnessctl alacritty htop flameshot ncspot-bin rofi ranger cava gnome-keyring lxappearance pavucontrol github-cli google-chrome visual-studio-code-bin upower qt5-graphicaleffects alsa-utils sddm imagemagick qt5-quickcontrols2 xz qt5-svg nodejs-lts-hydrogen npm --noconfirm --needed
+fi
+
+if ! command -v pnpm &>/dev/null; then
+  curl -fsSL https://get.pnpm.io/install.sh | sh -
 fi
 
 # Check and set Zsh as the default shell
