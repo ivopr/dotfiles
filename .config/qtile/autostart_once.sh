@@ -13,6 +13,3 @@ xset -dpms
 
 # set keyboard repeat rate
 xset r rate 350 60
-
-gummy start
-gummy -t 4000
