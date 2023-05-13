@@ -394,14 +394,17 @@ def autostart_once():
 def floating_size_hints(window):
     floating_window_names = ["Save File"]
 
-    window_wm_name = window.window.get_wm_name()
+    window_wm_name = window.name
 
     should_float = window_wm_name in floating_window_names
 
     if should_float:
         window.floating = True
+        window.cmd_set_size_floating(800, 600)
+        window.cmd_center()
 
-auto_fullscreen = True
+
+auto_fullscreen = False
 focus_on_window_activation = "smart"
 reconfigure_screens = True
 

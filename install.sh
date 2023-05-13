@@ -53,9 +53,15 @@ if [ ! -d "$HOME/.config/zsh/zsh-syntax-highlighting" ]; then
   git clone https://github.com/zsh-users/zsh-syntax-highlighting ~/.config/zsh/zsh-syntax-highlighting
 fi
 
+if [ ! -d "$HOME/.icons/Papirus" ]; then
+  echo "do this"
+  cp -r .icons $HOME
+fi
 
-cp -r .icons $HOME
-cp -r .themes $HOME
+if [ ! -d "$HOME/.themes/Juno" ]; then
+  echo "do that"
+  cp -r .themes $HOME
+fi
 
 # Make Backup
 echo "Backing up the current configs. All the backed up files will be available at ~/.config.bak"
