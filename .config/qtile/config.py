@@ -356,7 +356,8 @@ dgroups_app_rules = [
     Rule(Match(wm_class=["code"]), group="1"),
     Rule(Match(wm_class=["Alacritty"]), group="2"),
     Rule(Match(wm_class=["google-chrome", "Google-chrome"]), group="3"),
-    Rule(Match(wm_class=["discord", "Spotify"]), group="4")
+    Rule(Match(wm_class=["discord", "com-github-manolo8-darkbot-Bot"]), group="4"),
+    Rule(Match(wm_class=["dark_backpage"]), group="5")
 ]  # type: list
 follow_mouse_focus = True
 bring_front_click = False
@@ -392,7 +393,7 @@ def autostart_once():
 
 @hook.subscribe.client_new
 def floating_size_hints(window):
-    floating_window_names = ["Save File"]
+    floating_window_names = ["Save File", "DarkBot Configuration"]
 
     window_wm_name = window.name
 
@@ -404,7 +405,7 @@ def floating_size_hints(window):
         window.cmd_center()
 
 
-auto_fullscreen = False
+auto_fullscreen = True
 focus_on_window_activation = "smart"
 reconfigure_screens = True
 
