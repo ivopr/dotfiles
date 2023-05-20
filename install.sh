@@ -81,9 +81,6 @@ done
 
 cp .zshrc ~/.zshrc
 
-cp .Xresources ~/.Xresources
-cp .xinitrc ~/.xinitrc
-
 if [ ! -f "/etc/sddm.conf" ]; then
   sudo mkdir -p /usr/share/sddm/themes
   sudo xz -xf ./sugar-candy.tar.gz -C /usr/share/sddm/themes
