@@ -16,6 +16,7 @@ xset -dpms
 
 # set keyboard repeat rate
 xset r rate 350 60
+xrandr --output eDP-1 --panning 1920x1080 --scale 1.406x1.406
 
 # prefer dark theme
 gsettings set org.gnome.desktop.interface color-scheme 'prefer-dark'

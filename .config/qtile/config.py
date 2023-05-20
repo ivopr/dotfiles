@@ -336,7 +336,7 @@ screens = [
             border_width=[0, 0, 0, 0],
             margin=[15, 60, 6, 60],
         ),
-        left=bar.Gap(35),
+        left=bar.Gap(50),
         right=bar.Gap(7),
         bottom=bar.Gap(7)
     ),
