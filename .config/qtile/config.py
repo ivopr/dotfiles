@@ -282,7 +282,8 @@ screens = [
 
                 widget.Volume(
                     font='Fira Code Nerd',
-                    theme_path=f'{cwdir}/Assets/Volume/',
+                    channel='PCM',
+                    theme_path=f'{cwdir}/Assets/Volume',
                     emoji=True,
                     fontsize=13,
                     background='#202222',
@@ -298,11 +299,10 @@ screens = [
 
                 widget.Volume(
                     font='Fira Code Bold',
+                    channel='PCM',
                     fontsize=13,
                     background='#202222',
-                    format='{}%',
                     foreground='#607767',
-                    get_volume_command='amixer sget PCM | awk -F"[][]" \'/Mono:/ { print $2 }\'',
                 ),
 
 
@@ -321,7 +321,7 @@ screens = [
 
 
                 widget.Clock(
-                    format='%I:%M %p',
+                    format='%d/%m/%y %H:%M',
                     background='#0F1212',
                     foreground='#607767',
                     font="Fira Code Bold",
