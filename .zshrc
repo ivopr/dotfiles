@@ -3,7 +3,8 @@ HISTFILE=~/.cache/zsh
 HISTSIZE=10000
 SAVEHIST=10000
 
-export PATH="$HOME/.local/bin:$PATH"
+export VOLTA_HOME="$HOME/.volta"
+export PATH="$VOLTA_HOME/bin:$HOME/.local/bin:$PATH"
 
 # Autosuggestions: https://github.com/zsh-users/zsh-autosuggestions
 source ~/.config/zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
@@ -22,7 +23,6 @@ ZSH_HIGHLIGHT_STYLES[precommand]='fg=yellow'
 
 alias wp3="sudo docker run --privileged -ti --rm --name wifipumpkin3 --net host \"wifipumpkin3\""
 alias dps="docker ps --format \"table {{.Names}}\t{{.Image}}\t{{.Ports}}\t{{.Status}}\""
-
 
 # GROMACS gmx
 source /usr/local/gromacs/bin/GMXRC

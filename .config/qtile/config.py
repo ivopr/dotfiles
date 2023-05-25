@@ -298,8 +298,11 @@ screens = [
 
                 widget.Volume(
                     font='Fira Code Bold',
+                    fontsize=13,
                     background='#202222',
+                    format='{}%',
                     foreground='#607767',
+                    get_volume_command='amixer sget PCM | awk -F"[][]" \'/Mono:/ { print $2 }\'',
                 ),
 
 
