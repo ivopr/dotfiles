@@ -30,7 +30,7 @@ fi
 
 # Update and install dependencies
 if command -v paru &>/dev/null; then
-  paru -Syu base-devel qtile ttf-firacode-nerd ttf-fira-code python-psutil picom-jonaburg-fix dunst zsh starship brightnessctl alacritty htop flameshot rofi ranger cava gnome-keyring lxappearance pavucontrol github-cli google-chrome visual-studio-code-bin upower qt5-graphicaleffects alsa-utils sddm imagemagick qt5-quickcontrols2 xz qt5-svg network-manager-applet --noconfirm --needed
+  paru -Syu base-devel qtile ttf-firacode-nerd ttf-fira-code python-psutil picom-jonaburg-fix dunst zsh starship brightnessctl alacritty htop flameshot rofi ranger cava gnome-keyring pavucontrol github-cli google-chrome visual-studio-code-bin upower qt5-graphicaleffects alsa-utils sddm imagemagick qt5-quickcontrols2 xz qt5-svg network-manager-applet --noconfirm --needed
 fi
 
 # Check and set Zsh as the default shell
