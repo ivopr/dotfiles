@@ -33,14 +33,6 @@ if command -v paru &>/dev/null; then
   paru -Syu base-devel qtile ttf-firacode-nerd ttf-fira-code python-psutil picom-jonaburg-fix dunst zsh starship brightnessctl alacritty htop flameshot rofi ranger cava gnome-keyring lxappearance pavucontrol github-cli google-chrome visual-studio-code-bin upower qt5-graphicaleffects alsa-utils sddm imagemagick qt5-quickcontrols2 xz qt5-svg network-manager-applet --noconfirm --needed
 fi
 
-if ! command -v pnpm &>/dev/null; then
-  sudo npm i -g pnpm
-fi
-
-if ! command -v yarn &>/dev/null; then
-  sudo npm i -g yarn
-fi
-
 # Check and set Zsh as the default shell
 [[ "$(awk -F: -v user="$USER" '$1 == user {print $NF}' /etc/passwd) " =~ "zsh " ]] || chsh -s $(which zsh)
 
@@ -53,13 +45,18 @@ if [ ! -d "$HOME/.config/zsh/zsh-syntax-highlighting" ]; then
   git clone https://github.com/zsh-users/zsh-syntax-highlighting ~/.config/zsh/zsh-syntax-highlighting
 fi
 
-if [ ! -d "$HOME/.icons/Papirus" ]; then
+if [ ! -d "$HOME/.icons/kora-grey" ]; then
   echo "do this"
+  cd .icons && unzip -n kora-grey-1-5-8.zip &>/dev/null && cd ..
+  mv .icons/kora_grey/kora-grey .icons/kora-grey
+  cd .icons && tar xf Qogir-cursors.tar.xz && cd ..
+  rm -rf .icons/kora_grey
+  rm -rf .icons/Qogir-white-cursors
   cp -r .icons $HOME
 fi
 
-if [ ! -d "$HOME/.themes/Juno" ]; then
-  echo "do that"
+if [ ! -d "$HOME/.themes/Nordic" ]; then
+  cd .themes && tar xf Nordic.tar.xz && cd ..
   cp -r .themes $HOME
 fi
 
