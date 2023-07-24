@@ -25,12 +25,12 @@ if command -v paru &>/dev/null; then
 else
   echo "Paru is not present in your system."
   echo "Installing paru..."
-  git clone https://aur.archlinux.org/paru-bin.git && cd paru-bin && makepkg -si --noconfirm && cd ..
+  git clone https://aur.archlinux.org/paru-bin.git && cd paru-bin && makepkg -si --noconfirm && cd .. && rm -rf paru-bin
 fi
 
 # Update and install dependencies
 if command -v paru &>/dev/null; then
-  paru -Syu base-devel qtile ttf-firacode-nerd ttf-fira-code python-psutil picom-jonaburg-fix dunst zsh starship brightnessctl alacritty htop flameshot rofi ranger cava gnome-keyring pavucontrol github-cli google-chrome visual-studio-code-bin upower qt5-graphicaleffects alsa-utils sddm imagemagick qt5-quickcontrols2 xz qt5-svg network-manager-applet --noconfirm --needed
+  paru -Syu base-devel qtile ttf-firacode-nerd xz ttf-fira-code python-psutil picom picom-jonaburg-fix dunst zsh starship brightnessctl alacritty htop flameshot rofi ranger cava gnome-keyring pavucontrol github-cli google-chrome visual-studio-code-bin upower qt5-graphicaleffects alsa-utils sddm imagemagick qt5-quickcontrols2 xz qt5-svg network-manager-applet --noconfirm --needed
 fi
 
 # Check and set Zsh as the default shell
@@ -67,13 +67,11 @@ if [ ! -d ~/.config.bak ]; then
 fi
 for folder in .config/*; do
   rel=$(echo $folder | rev | cut -d/ -f1 | rev)
-  if [ ! $rel = "Code" ]; then
-    echo "Backing up ~/.config/$rel"
-    cp -r ~/.config/$rel ~/.config.bak
-    rm -rf ~/.config/$rel
-    echo "Copying new config for $rel"
-    cp -r .config/$rel ~/.config
-  fi
+  echo "Backing up ~/.config/$rel"
+  cp -r ~/.config/$rel ~/.config.bak
+  rm -rf ~/.config/$rel
+  echo "Copying new config for $rel"
+  cp -r .config/$rel ~/.config
 done
 
 cp .zshrc ~/.zshrc

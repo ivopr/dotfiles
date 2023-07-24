@@ -254,35 +254,8 @@ screens = [
                     background='#202222',
                 ),
 
-
-                widget.BatteryIcon(
-                    theme_path=f'{cwdir}/Assets/Battery/',
-                    background='#202222',
-                    scale=1,
-                ),
-
-
-                widget.Battery(
-                    font='Fira Code Bold',
-                    background='#202222',
-                    foreground='#607767',
-                    format='{percent:2.0%}',
-                ),
-
-
-                widget.Image(
-                    filename=f'{cwdir}/Assets/2.png',
-                ),
-
-
-                widget.Spacer(
-                    length=8,
-                    background='#202222',
-                ),
-
                 widget.Volume(
                     font='Fira Code Nerd',
-                    channel='PCM',
                     theme_path=f'{cwdir}/Assets/Volume',
                     emoji=True,
                     fontsize=13,
@@ -299,7 +272,6 @@ screens = [
 
                 widget.Volume(
                     font='Fira Code Bold',
-                    channel='PCM',
                     fontsize=13,
                     background='#202222',
                     foreground='#607767',
@@ -339,7 +311,7 @@ screens = [
             border_width=[0, 0, 0, 0],
             margin=[15, 60, 6, 60],
         ),
-        left=bar.Gap(50),
+        left=bar.Gap(7),
         right=bar.Gap(7),
         bottom=bar.Gap(7)
     ),
@@ -359,8 +331,6 @@ dgroups_app_rules = [
     Rule(Match(wm_class=["code"]), group="1"),
     Rule(Match(wm_class=["Alacritty"]), group="2"),
     Rule(Match(wm_class=["google-chrome", "Google-chrome"]), group="3"),
-    Rule(Match(wm_class=["discord", "com-github-manolo8-darkbot-Bot"]), group="4"),
-    Rule(Match(wm_class=["dark_backpage"]), group="5")
 ]  # type: list
 follow_mouse_focus = True
 bring_front_click = False
