@@ -5,6 +5,7 @@ SAVEHIST=10000
 
 export VOLTA_HOME="$HOME/.volta"
 export PATH="$VOLTA_HOME/bin:$HOME/.local/bin:$PATH"
+export ANDROID_HOME="$HOME/Android/Sdk"
 
 # Autosuggestions: https://github.com/zsh-users/zsh-autosuggestions
 source ~/.config/zsh/zsh-autosuggestions/zsh-autosuggestions.zsh

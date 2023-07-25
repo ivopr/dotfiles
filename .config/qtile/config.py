@@ -248,7 +248,6 @@ screens = [
                     filename=f'{cwdir}/Assets/2.png',
                 ),
 
-
                 widget.Spacer(
                     length=8,
                     background='#202222',
@@ -333,6 +332,7 @@ dgroups_app_rules = [
     Rule(Match(wm_class=["google-chrome", "Google-chrome"]), group="3"),
 ]  # type: list
 follow_mouse_focus = True
+floats_kept_above = True
 bring_front_click = False
 cursor_warp = False
 floating_layout = layout.Floating(
@@ -348,11 +348,10 @@ floating_layout = layout.Floating(
         Match(wm_class="ssh-askpass"),  # ssh-askpass
         Match(title="branchdialog"),  # gitk
         Match(title="pinentry"),  # GPG key password entry
+        Match(title="Android Emulator - Pixel_3a_API_34_extension_level_7_x86_64:5554"),
+        Match(wm_class="jetbrains-studio")
     ]
 )
-
-
-
 
 from libqtile import hook
 # some other imports
@@ -366,7 +365,7 @@ def autostart_once():
 
 @hook.subscribe.client_new
 def floating_size_hints(window):
-    floating_window_names = ["Save File", "DarkBot Configuration"]
+    floating_window_names = ["Save File", "Welcome to Android Studio"]
 
     window_wm_name = window.name
 

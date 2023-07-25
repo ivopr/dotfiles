@@ -78,7 +78,7 @@ cp .zshrc ~/.zshrc
 
 if [ ! -f "/etc/sddm.conf" ]; then
   sudo mkdir -p /usr/share/sddm/themes
-  sudo xz -xf ./sugar-candy.tar.gz -C /usr/share/sddm/themes
+  sudo tar -xf ./sugar-candy.tar.gz -C /usr/share/sddm/themes
 
   sudo cp sddm.conf /etc/sddm.conf
 fi
