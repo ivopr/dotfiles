@@ -122,73 +122,35 @@ def power():
 
 # █▄▄ ▄▀█ █▀█
 # █▄█ █▀█ █▀▄
+
+large_dark_spacer = widget.Spacer(length=15, background='#0F1212')
+launch_icon = widget.Image(filename=f'{cwdir}/Assets/launch_Icon.png', margin=2, background='#0F1212', mouse_callbacks={"Button1": power})
+dark_separator_to_left = widget.Image(filename=f'{cwdir}/Assets/6.png')
+
+group_box = widget.GroupBox(fontsize=10, borderwidth=3, highlight_method='block', active='#607767', block_highlight_text_color="#B2BEBC", highlight_color='#D0DAF0', inactive='#0F1212', foreground='#4B427E', background='#202222', this_current_screen_border='#202222', this_screen_border='#202222', other_current_screen_border='#202222', other_screen_border='#202222', urgent_border='#202222', rounded=True, disable_drag=True)
+
+normal_spacer = widget.Spacer(length=8, background='#202222')
+large_normal_spacer = widget.Spacer(length=18, background='#202222')
+normal_separator = widget.Image(filename=f'{cwdir}/Assets/2.png')
+
 screens = [
     Screen(
         wallpaper=f"{cwdir}/Assets/wallpaper.jpg",
         wallpaper_mode="fill",
         top=bar.Bar(
             [
-				widget.Spacer(length=15,
-                    background='#0F1212',
-                ),
+                large_dark_spacer,
+                launch_icon,
+                dark_separator_to_left,
 
-                widget.Image(
-                    filename=f'{cwdir}/Assets/launch_Icon.png',
-                    margin=2,
-                    background='#0F1212',
-                    mouse_callbacks={"Button1": power},
-                ),
+                normal_spacer,
+                normal_spacer,
 
-                widget.Image(
-                    filename=f'{cwdir}/Assets/6.png',
-                ),
+                group_box,
 
-                widget.GroupBox(
-                    fontsize=10,
-                    borderwidth=3,
-                    highlight_method='block',
-                    active='#607767',
-                    block_highlight_text_color="#B2BEBC",
-                    highlight_color='#D0DAF0',
-                    inactive='#0F1212',
-                    foreground='#4B427E',
-                    background='#202222',
-                    this_current_screen_border='#202222',
-                    this_screen_border='#202222',
-                    other_current_screen_border='#202222',
-                    other_screen_border='#202222',
-                    urgent_border='#202222',
-                    rounded=True,
-                    disable_drag=True,
-                ),
-
-                widget.Spacer(
-                    length=8,
-                    background='#202222',
-                ),
-
-                widget.Image(
-                    filename=f'{cwdir}/Assets/5.png',
-                ),
-
-
-                widget.Image(
-                    filename=f'{cwdir}/Assets/layout.png',
-                    background="#0F1212"
-                ),
-
-                widget.CurrentLayout(
-                    background='#0F1212',
-                    foreground='#607767',
-                    fmt='{}',
-                    font="Fira Code Bold",
-                ),
-
-
-                widget.Image(
-                    filename=f'{cwdir}/Assets/4.png',
-                ),
-
+                normal_spacer,
+                normal_separator,
+                normal_spacer,
 
                 widget.WindowName(
                     background = '#202222',
@@ -196,44 +158,40 @@ screens = [
                     font='Fira Code Bold',
                     foreground='#607767',
                     empty_group_string = 'Desktop',
-
                 ),
 
-
-                widget.Image(
-                    filename=f'{cwdir}/Assets/3.png',
-                ),
-
+                normal_spacer,
+                normal_separator,
+                normal_spacer,
 
                 widget.Systray(
-                    background='#0F1212',
+                    background='#202222',
                     fontsize=2,
                     padding=10
                 ),
 
+                normal_spacer,
+                normal_separator,
+                normal_spacer,
 
-                widget.TextBox(
-                    text=' ',
-                    background='#0F1212',
-                ),
-
-
-                widget.Image(
-                    filename=f'{cwdir}/Assets/6.png',
+                widget.ThermalSensor(
+                    tag_sensor="Tctl",
+                    format='CPU: {temp:.0f}{unit}',
                     background='#202222',
+                    foreground='#607767',
+                    font="Fira Code Bold",
+                    fontsize=13,
+                    update_interval=5,
                 ),
+
+                normal_spacer,
+                normal_separator,
+                normal_spacer,
 
                 widget.Image(
                     filename=f'{cwdir}/Assets/Misc/ram.png',
                     background='#202222',
                 ),
-
-
-                widget.Spacer(
-                    length=-7,
-                    background='#202222',
-                ),
-
 
                 widget.Memory(
                     background='#202222',
@@ -244,14 +202,9 @@ screens = [
                     update_interval=5,
                 ),
 
-                widget.Image(
-                    filename=f'{cwdir}/Assets/2.png',
-                ),
-
-                widget.Spacer(
-                    length=8,
-                    background='#202222',
-                ),
+                normal_spacer,
+                normal_separator,
+                normal_spacer,
 
                 widget.Volume(
                     font='Fira Code Nerd',
@@ -262,13 +215,6 @@ screens = [
                     padding=2
                 ),
 
-
-                widget.Spacer(
-                    length=-5,
-                    background='#202222',
-                    ),
-
-
                 widget.Volume(
                     font='Fira Code Bold',
                     fontsize=13,
@@ -276,16 +222,13 @@ screens = [
                     foreground='#607767',
                 ),
 
-
-                widget.Image(
-                    filename=f'{cwdir}/Assets/5.png',
-                    background='#202222',
-                ),
-
+                normal_spacer,
+                normal_separator,
+                normal_spacer,
 
                 widget.Image(
                     filename=f'{cwdir}/Assets/Misc/clock.png',
-                    background='#0F1212',
+                    background='#202222',
                     margin_y=6,
                     margin_x=5,
                 ),
@@ -293,17 +236,12 @@ screens = [
 
                 widget.Clock(
                     format='%d/%m/%y %H:%M',
-                    background='#0F1212',
+                    background='#202222',
                     foreground='#607767',
                     font="Fira Code Bold",
                     fontsize=13,
                 ),
-
-
-                widget.Spacer(
-                    length=18,
-                    background='#0F1212',
-                ),
+                large_normal_spacer,
             ],
             30,
             border_color='#282738',
@@ -328,6 +266,7 @@ mouse = [
 dgroups_key_binder = None
 dgroups_app_rules = [
     Rule(Match(wm_class=["code"]), group="1"),
+    Rule(Match(title=["Android Emulator - Pixel_3a_API_34_extension_level_7_x86_64:5554"]), group="1"),
     Rule(Match(wm_class=["Alacritty"]), group="2"),
     Rule(Match(wm_class=["google-chrome", "Google-chrome"]), group="3"),
 ]  # type: list
@@ -348,7 +287,7 @@ floating_layout = layout.Floating(
         Match(wm_class="ssh-askpass"),  # ssh-askpass
         Match(title="branchdialog"),  # gitk
         Match(title="pinentry"),  # GPG key password entry
-        Match(title="Android Emulator - Pixel_3a_API_34_extension_level_7_x86_64:5554"),
+        # Match(title="Android Emulator - Pixel_3a_API_34_extension_level_7_x86_64:5554"),
         Match(wm_class="jetbrains-studio")
     ]
 )
