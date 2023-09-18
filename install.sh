@@ -11,9 +11,9 @@ is_installed() {
 }
 
 # Update system 
-sudo pacman -Syu
 
 if ! is_installed git; then
+  sudo pacman -Syu
   sudo pacman -S git --noconfirm
 else
   echo "git v$(git -v | cut -d' ' -f3) is already installed in your system"
@@ -30,7 +30,14 @@ fi
 
 # Update and install dependencies
 if command -v paru &>/dev/null; then
-  paru -Syu base-devel qtile ttf-firacode-nerd xz ttf-fira-code python-psutil picom picom-jonaburg-fix dunst zsh starship brightnessctl alacritty htop flameshot rofi ranger cava gnome-keyring pavucontrol github-cli google-chrome visual-studio-code-bin upower qt5-graphicaleffects alsa-utils sddm imagemagick qt5-quickcontrols2 xz qt5-svg network-manager-applet --noconfirm --needed
+  paru -Syu python-pipx base-devel ttf-firacode-nerd gnome xz ttf-fira-code python-psutil picom picom-jonaburg-fix dunst zsh starship brightnessctl alacritty htop flameshot rofi ranger cava gnome-keyring pavucontrol github-cli google-chrome visual-studio-code-bin upower qt5-graphicaleffects alsa-utils sddm imagemagick qt5-quickcontrols2 xz qt5-svg network-manager-applet --noconfirm --needed
+fi
+
+if command -v qtile &>/dev/null; then
+  echo "qtile $(qtile -v | cut -d' ' -f2) is already installed in your system"
+else
+  echo "Installing Qtile"
+  pipx install qtile
 fi
 
 # Check and set Zsh as the default shell
@@ -55,11 +62,6 @@ if [ ! -d "$HOME/.icons/kora-grey" ]; then
   cp -r .icons $HOME
 fi
 
-if [ ! -d "$HOME/.themes/Nordic" ]; then
-  cd .themes && tar xf Nordic.tar.xz && cd ..
-  cp -r .themes $HOME
-fi
-
 # Make Backup
 echo "Backing up the current configs. All the backed up files will be available at ~/.config.bak"
 if [ ! -d ~/.config.bak ]; then
@@ -75,15 +77,3 @@ for folder in .config/*; do
 done
 
 cp .zshrc ~/.zshrc
-
-if [ ! -f "/etc/sddm.conf" ]; then
-  sudo mkdir -p /usr/share/sddm/themes
-  sudo tar -xf ./sugar-candy.tar.gz -C /usr/share/sddm/themes
-
-  sudo cp sddm.conf /etc/sddm.conf
-fi
-
-# Enable and start SDDM
-if is_installed sddm; then
-  sudo systemctl enable sddm && sudo systemctl start sddm
-fi

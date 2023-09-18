@@ -1,19 +1,11 @@
-#                                                               #
-#       ______                  __  _ __        _    _____      #
-#      / ____/___  ____  __  __/ /_(_) /__     | |  / /__ \     #
-#     / /   / __ \/_  / / / / / __/ / / _ \    | | / /__/ /     #
-#    / /___/ /_/ / / /_/ /_/ / /_/ / /  __/    | |/ // __/      #
-#    \____/\____/ /___/\__, /\__/_/_/\___/     |___//____/      #
-#                     /____/                                    #
-#                                                               #
-#                                                     DARKKAL44 #
-# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
-
-
-from libqtile import bar, layout, widget, hook, qtile
-from libqtile.config import Click, Drag, Group, Key, Match, hook, Screen, Rule
+from libqtile import bar, layout, widget,hook, qtile
+from libqtile.backend.base import Window
+from libqtile.config import Click, Drag, Group, Key, Match, Screen, Rule
 from libqtile.lazy import lazy
 from os import path
+# some other imports
+import os
+import subprocess
 
 cwdir = path.dirname(__file__)
 
@@ -23,8 +15,7 @@ terminal = "alacritty"
 # █▄▀ █▀▀ █▄█ █▄▄ █ █▄░█ █▀▄ █▀
 # █░█ ██▄ ░█░ █▄█ █ █░▀█ █▄▀ ▄█
 keys = [
-
-#  D E F A U L T
+    #  D E F A U L T
     Key([mod], "Left", lazy.layout.left(), desc="Move focus to left"),
     Key([mod], "Right", lazy.layout.right(), desc="Move focus to right"),
     Key([mod], "Down", lazy.layout.down(), desc="Move focus down"),
@@ -54,7 +45,7 @@ keys = [
     Key([mod], "r", lazy.spawn("rofi -show drun"), desc="Spawn a command using a prompt widget"),
     Key([mod], "p", lazy.spawn("sh -c ~/.config/rofi/scripts/power"), desc='powermenu'),
 
-# C U S T O M
+    # C U S T O M
     Key([], "XF86AudioRaiseVolume", lazy.spawn("pactl set-sink-volume 0 +5%"), desc='Volume Up'),
     Key([], "XF86AudioLowerVolume", lazy.spawn("pactl set-sink-volume 0 -5%"), desc='volume down'),
     Key([], "XF86AudioMute", lazy.spawn("pulsemixer --toggle-mute"), desc='Volume Mute'),
@@ -63,47 +54,41 @@ keys = [
     Key([], "XF86AudioNext", lazy.spawn("playerctl next"), desc='playerctl'),
     Key([], "XF86MonBrightnessUp", lazy.spawn("brightnessctl s 10%+"), desc='brightness UP'),
     Key([], "XF86MonBrightnessDown", lazy.spawn("brightnessctl s 10%-"), desc='brightness Down'),
-	Key([mod], "h", lazy.spawn("roficlip"), desc='clipboard'),
+    Key([mod], "h", lazy.spawn("roficlip"), desc='clipboard'),
     Key([mod], "s", lazy.spawn("flameshot gui"), desc='Screenshot'),
 ]
 
-
-
 # █▀▀ █▀█ █▀█ █░█ █▀█ █▀
 # █▄█ █▀▄ █▄█ █▄█ █▀▀ ▄█
-groups = [Group(f"{i+1}", label="󰏃") for i in range(5)]
+groups = [Group(f"{i + 1}", label="󰏃") for i in range(5)]
 
 for i in groups:
     keys.extend(
-            [
-                Key(
-                    [mod],
-                    i.name,
-                    lazy.group[i.name].toscreen(),
-                    desc="Switch to group {}".format(i.name),
-                    ),
-                Key(
-                    [mod, "shift"],
-                    i.name,
-                    lazy.window.togroup(i.name, switch_group=True),
-                    desc="Switch to & move focused window to group {}".format(i.name),
-                    ),
-                ]
-            )
-
-
-
+        [
+            Key(
+                [mod],
+                i.name,
+                lazy.group[i.name].toscreen(),
+                desc="Switch to group {}".format(i.name),
+            ),
+            Key(
+                [mod, "shift"],
+                i.name,
+                lazy.window.togroup(i.name, switch_group=True),
+                desc="Switch to & move focused window to group {}".format(i.name),
+            ),
+        ]
+    )
 
 # L A Y O U T S
 layouts = [
     layout.Columns(
         margin=3,
         border_focus='#607767',
-	    border_normal='#1F1D2E',
+        border_normal='#1F1D2E',
         border_width=2,
     )
 ]
-
 
 widget_defaults = dict(
     font="sans",
@@ -124,10 +109,15 @@ def power():
 # █▄█ █▀█ █▀▄
 
 large_dark_spacer = widget.Spacer(length=15, background='#0F1212')
-launch_icon = widget.Image(filename=f'{cwdir}/Assets/launch_Icon.png', margin=2, background='#0F1212', mouse_callbacks={"Button1": power})
+launch_icon = widget.Image(filename=f'{cwdir}/Assets/launch_Icon.png', margin=2, background='#0F1212',
+                           mouse_callbacks={"Button1": power})
 dark_separator_to_left = widget.Image(filename=f'{cwdir}/Assets/6.png')
 
-group_box = widget.GroupBox(fontsize=10, borderwidth=3, highlight_method='block', active='#607767', block_highlight_text_color="#B2BEBC", highlight_color='#D0DAF0', inactive='#0F1212', foreground='#4B427E', background='#202222', this_current_screen_border='#202222', this_screen_border='#202222', other_current_screen_border='#202222', other_screen_border='#202222', urgent_border='#202222', rounded=True, disable_drag=True)
+group_box = widget.GroupBox(fontsize=10, borderwidth=3, highlight_method='block', active='#607767',
+                            block_highlight_text_color="#B2BEBC", highlight_color='#D0DAF0', inactive='#0F1212',
+                            foreground='#4B427E', background='#202222', this_current_screen_border='#202222',
+                            this_screen_border='#202222', other_current_screen_border='#202222',
+                            other_screen_border='#202222', urgent_border='#202222', rounded=True, disable_drag=True)
 
 normal_spacer = widget.Spacer(length=8, background='#202222')
 large_normal_spacer = widget.Spacer(length=18, background='#202222')
@@ -153,11 +143,11 @@ screens = [
                 normal_spacer,
 
                 widget.WindowName(
-                    background = '#202222',
-                    format = "{name}",
+                    background='#202222',
+                    format="{name}",
                     font='Fira Code Bold',
                     foreground='#607767',
-                    empty_group_string = 'Desktop',
+                    empty_group_string='Desktop',
                 ),
 
                 normal_spacer,
@@ -233,7 +223,6 @@ screens = [
                     margin_x=5,
                 ),
 
-
                 widget.Clock(
                     format='%d/%m/%y %H:%M',
                     background='#202222',
@@ -254,8 +243,6 @@ screens = [
     ),
 ]
 
-
-
 # Drag floating layouts.
 mouse = [
     Drag([mod], "Button1", lazy.window.set_position_floating(), start=lazy.window.get_position()),
@@ -265,11 +252,10 @@ mouse = [
 
 dgroups_key_binder = None
 dgroups_app_rules = [
-    Rule(Match(wm_class=["code"]), group="1"),
-    Rule(Match(title=["Android Emulator - Pixel_3a_API_34_extension_level_7_x86_64:5554"]), group="1"),
-    Rule(Match(wm_class=["Alacritty"]), group="2"),
-    Rule(Match(wm_class=["google-chrome", "Google-chrome"]), group="3"),
-]  # type: list
+    Rule(Match(wm_class=["code", "jetbrains-webstorm", "jetbrains-pycharm", "jetbrains-phpstorm", "jetbrains-clion"]), group="1"),
+    Rule(Match(wm_class="Alacritty"), group="2"),
+    Rule(Match(wm_class="google-chrome"), group="3"),
+]
 follow_mouse_focus = True
 floats_kept_above = True
 bring_front_click = False
@@ -277,7 +263,7 @@ cursor_warp = False
 floating_layout = layout.Floating(
     border_focus='#607767',
     border_normal='#1F1D2E',
-	border_width=2,
+    border_width=2,
     float_rules=[
         # Run the utility of `xprop` to see the wm class and name of an X client.
         *layout.Floating.default_float_rules,
@@ -287,33 +273,39 @@ floating_layout = layout.Floating(
         Match(wm_class="ssh-askpass"),  # ssh-askpass
         Match(title="branchdialog"),  # gitk
         Match(title="pinentry"),  # GPG key password entry
-        # Match(title="Android Emulator - Pixel_3a_API_34_extension_level_7_x86_64:5554"),
         Match(wm_class="jetbrains-studio")
     ]
 )
 
-from libqtile import hook
-# some other imports
-import os
-import subprocess
+
 # stuff
 @hook.subscribe.startup_once
 def autostart_once():
     home = os.path.expanduser(f'{cwdir}/autostart_once.sh')
     subprocess.Popen([home])
 
+
+@hook.subscribe.client_managed
+def resize_android_emulator(client: Window):
+    if client.name == "Emulator":
+        group_layout = client.group.layouts[client.group.current_layout]
+        group_layout.previous()
+        group_layout.grow_right()
+        group_layout.grow_right()
+        group_layout.grow_right()
+        group_layout.grow_right()
+
+
 @hook.subscribe.client_new
-def floating_size_hints(window):
-    floating_window_names = ["Save File", "Welcome to Android Studio"]
+def on_new_client(client: Window):
+    floating_window_names = ["Save File", "Open File", "Welcome to Android Studio"]
 
-    window_wm_name = window.name
-
-    should_float = window_wm_name in floating_window_names
+    should_float = client.name in floating_window_names
 
     if should_float:
-        window.floating = True
-        window.cmd_set_size_floating(800, 600)
-        window.cmd_center()
+        client.floating = True
+        client.cmd_set_size_floating(800, 600)
+        client.cmd_center()
 
 
 auto_fullscreen = True
@@ -336,7 +328,5 @@ wl_input_rules = None
 # We choose LG3D to maximize irony: it is a 3D non-reparenting WM written in
 # java that happens to be on java's whitelist.
 wmname = "LG3D"
-
-
 
 # E O F
