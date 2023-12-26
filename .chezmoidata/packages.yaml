@@ -1,0 +1,12 @@
+packages:
+  arch:
+    pacman:
+    - 'base-devel'
+    - 'discord'
+    - 'gnome'
+    - 'gnome-extra'
+    aur:
+    - 'android-studio'
+    - 'gnome-shell-extension-forge'
+    - 'google-chrome'
+    - 'visual-studio-code-bin'
