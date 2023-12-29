@@ -3,6 +3,7 @@ packages:
     pacman:
     - 'base-devel'
     - 'discord'
+    - 'docker'
     - 'github-cli'
     - 'ttf-fira-code'
     - 'ttf-font-awesome'
