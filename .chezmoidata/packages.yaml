@@ -3,10 +3,15 @@ packages:
     pacman:
     - 'base-devel'
     - 'discord'
-    - 'gnome'
-    - 'gnome-extra'
+    - 'github-cli'
+    - 'ttf-fira-code'
+    - 'ttf-font-awesome'
+    - 'ttf-nerd-fonts-symbols'
+    - 'zsh'
     aur:
     - 'android-studio'
-    - 'gnome-shell-extension-forge'
+    - 'gnome-browser-connector'
     - 'google-chrome'
     - 'visual-studio-code-bin'
+    - 'spotify'
+    - 'zsh-theme-powerlevel10k-git'

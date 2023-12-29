@@ -1,5 +1,7 @@
 {{ if eq .chezmoi.os "linux" -}}
   #!/bin/bash
 
+
   sudo systemctl enable --now gdm
+  chsh -s /bin/zsh
 {{ end -}}
