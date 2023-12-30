@@ -1,19 +1,30 @@
 {{ if eq .chezmoi.os "linux" -}}
   #!/bin/bash
 
-  chsh -s /bin/zsh
+  if [ ! -n "$($SHELL -c 'echo $ZSH_VERSION')" ]; then
+    chsh -s /bin/zsh
+  fi
 
-  git clone https://github.com/zsh-users/zsh-autosuggestions ~/.zsh/zsh-autosuggestions
-  git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ~/.zsh/zsh-syntax-highlighting
+  if [[ ! -d ~/.zsh/zsh-autosuggestions ]]; then
+    git clone https://github.com/zsh-users/zsh-autosuggestions ~/.zsh/zsh-autosuggestions
+  fi
 
+  if [[ ! -d ~/.zsh/zsh-autosuggestions ]]; then
+    git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ~/.zsh/zsh-syntax-highlighting
+  fi
 
-  sudo systemctl enable --now docker gdm 
+  if [[ "$(systemctl is-enabled docker)" =~ "disabled" ]]; then
+    sudo systemctl enable --now docker
+    sudo groupadd docker
+    sudo usermod -aG docker $USER
+    newgrp docker
 
-  sudo groupadd docker
-  sudo usermod -aG docker $USER
-  newgrp docker
+    DOCKER_CONFIG=${DOCKER_CONFIG:-$HOME/.docker}
+    mkdir -p $DOCKER_CONFIG/cli-plugins
+    curl -SL https://github.com/docker/compose/releases/download/v2.23.3/docker-compose-linux-x86_64 -o $DOCKER_CONFIG/cli-plugins/docker-compose
+  fi
 
-  DOCKER_CONFIG=${DOCKER_CONFIG:-$HOME/.docker}
-  mkdir -p $DOCKER_CONFIG/cli-plugins
-  curl -SL https://github.com/docker/compose/releases/download/v2.23.3/docker-compose-linux-x86_64 -o $DOCKER_CONFIG/cli-plugins/docker-compose
+  if [[ "$(systemctl is-enabled gdm)" =~ "disabled" ]]; then
+    sudo systemctl enable --now gdm
+  fi
 {{ end -}}
