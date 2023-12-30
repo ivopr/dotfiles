@@ -5,5 +5,5 @@ volume-up=['<Shift><Control><Alt>Up']
 
 [custom-keybindings/custom0]
 binding='<Super>Return'
-command='gnome-terminal'
+command='kgx'
 name='Open Terminal'

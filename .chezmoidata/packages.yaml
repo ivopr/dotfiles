@@ -11,6 +11,7 @@ packages:
     - 'zsh'
     aur:
     - 'android-studio'
+    - 'forticlient-vpn'
     - 'gnome-browser-connector'
     - 'google-chrome'
     - 'visual-studio-code-bin'
