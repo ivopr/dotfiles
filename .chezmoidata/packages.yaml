@@ -5,6 +5,8 @@ packages:
     - 'discord'
     - 'docker'
     - 'github-cli'
+    - 'noto-fonts-cjk'
+    - 'noto-fonts-emoji'
     - 'ttf-fira-code'
     - 'ttf-font-awesome'
     - 'ttf-nerd-fonts-symbols'
