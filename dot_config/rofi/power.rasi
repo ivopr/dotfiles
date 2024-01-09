@@ -1,0 +1,189 @@
+
+
+* {
+  lighter: #c2bda6;
+  medium: #53524A;
+  darker: #48463d;
+  /* Default background color */
+  background-color: var(darker);
+  text-color:       var(lighter);
+  font: "JetBrainsMono Bold 10";
+}
+
+
+window {
+  border-color: var(darker);
+  border:       5px;
+  border-radius: 10px;
+  background-color: var(darker);
+  width: 300px;
+}
+
+mainbox {
+  spacing: 0px;
+  children: [message,listview];
+}
+
+message {
+    enabled:                     true;
+    margin:                      0px 50px;
+    padding:                     15px;
+    border:                      0px solid;
+    border-radius:               15px;
+    border-color:                inherit;
+    background-color:            inherit;
+    text-color:                  inherit;
+    size:                        300em;
+}
+textbox {
+    background-color:            inherit;
+    text-color:                  inherit;
+    vertical-align:              0.5;
+    horizontal-align:            0.5;
+    placeholder-color:           inherit;
+    blink:                       true;
+    markup:                      true;
+    size:                        400em;
+    font: "JetBrainsMono Bold 15";
+
+}
+error-message {
+    padding:                     12px;
+    border:                      0px solid;
+    border-radius:               0px;
+    border-color:                inherit;
+    background-color:            inherit;
+    text-color:                  inherit;
+}
+
+element {
+  background: transparent;
+  children: [ element-icon, element-text ];
+
+}
+element,element-text,element-icon, button {
+    cursor: pointer;
+}
+
+
+listview, message {
+  padding: 0.5em;
+  border-color: var(darker);
+  border:        5px;
+  border-radius: 10px;
+  background-color: var(darker);
+  columns: 1;
+  lines: 4;
+}
+listview {
+  border:       5px 5px 5px 5px;
+  border-radius: 10px 10px 10px 10px;
+  background-color: var(medium);
+  border-color:     var(darker);
+  font: "JetBrains Mono Medium";
+  scrollbar: false;
+
+}
+
+
+element {
+    border:  5px;
+    border-radius: 5px;
+    padding: 5px;
+    border-color: var(medium);
+}
+element-text {
+    background-color: var(medium);
+    text-color:       #FFFFFF;
+    font: "JetBrains Mono Medium";
+    margin:   0px 50px;
+}
+
+element normal.normal {
+    background-color: var(medium);
+    text-color:       var(lighter);
+}
+element.normal.urgent {
+    background-color: var(medium);
+    text-color:       var(lighter);
+}
+element.normal.active {
+    background-color: var(medium);
+    text-color:       var(lighter);
+}
+element.selected.normal {
+    background-color: var(lighter);
+    border-color: var(lighter);
+    text-color:       var(lighter);
+}
+element.selected.urgent {
+    background-color: var(lighter);
+    border-color: var(lighter);
+    text-color:       var(lighter);
+}
+element.selected.active {
+    background-color: var(lighter);
+    border-color: var(lighter);
+    text-color:       var(lighter);
+}
+element.alternate.normal {
+    background-color: var(medium);
+    text-color:       var(lighter);
+}
+element.alternate.urgent {
+    background-color: var(medium);
+    text-color:       var(lighter);
+}
+element.alternate.active {
+    background-color: var(medium);
+    text-color:       var(lighter);
+}
+
+
+element-text.selected.normal {
+    background-color: var(lighter);
+    border-color: var(lighter);
+    text-color:       var(darker);
+    font: "JetBrains Mono Medium";
+}
+element-text.selected.urgent {
+    background-color: var(lighter);
+    border-color: var(lighter);
+    text-color:       var(darker);
+    font: "JetBrains Mono Medium";
+}
+element-text.selected.active {
+    background-color: var(lighter);
+    border-color: var(lighter);
+    text-color:       var(darker);
+    font: "JetBrains Mono Medium";
+}
+
+
+button {
+    text-color: var(lighter);
+    border:       0px 0px 5px ;
+    border-color: var(darker);
+    border-radius:    10px 10px 0 0;
+    background-color: var(darker);
+    horizontal-align: 0.5;
+}
+button selected.normal {
+    text-color: var(lighter);
+    margin: 0px;
+    padding: 0px;
+    border:     5px 5px 5px 5px ;
+    border-color: var(darker);
+    border-radius:    10px 10px 10px 10px;
+    background-color: var(medium);
+}
+
+entry {
+    placeholder: "Search here";
+    placeholder-color: var(darker);
+    border-color: var(medium);
+    background-color: var(medium);
+    border:        10px;
+    border-radius: 2px 2px 2px 2px;
+    text-color: var(lighter);
+  }

@@ -1,0 +1,204 @@
+* {
+  /* Default background color */
+  lighter: #c2bda6;
+  darker: #48463d;
+  background-color: var(darker);
+  text-color:       var(lighter);
+  font: "Fira Code Retina 14";
+}
+
+
+window {
+  padding: 1em;
+  border-color: var(darker);
+  border: 5px;
+  border-radius: 10px;
+  background-color: var(darker);
+}
+
+mainbox {
+  spacing: 0px;
+  children: [message,inputbar,listview];
+}
+
+message {
+    enabled:                     true;
+    margin:                      0px 100px;
+    padding:                     15px;
+    border:                      0px solid;
+    border-radius:               15px;
+    border-color:                inherit;
+    background-color:            inherit;
+    text-color:                  inherit;
+    size:                        400em;
+}
+textbox {
+    background-color:            inherit;
+    text-color:                  inherit;
+    vertical-align:              0.5;
+    horizontal-align:            0.5;
+    placeholder-color:           inherit;
+    blink:                       true;
+    markup:                      true;
+    size:                        400em;
+    font: "Fira Code Bold 15";
+}
+error-message {
+    padding:                     12px;
+    border:                      0px solid;
+    border-radius:               0px;
+    border-color:                inherit;
+    background-color:            inherit;
+    text-color:                  inherit;
+}
+element {
+  background: transparent;
+  children: [ element-icon, element-text ];
+}
+element,element-text,element-icon, button {
+    cursor: pointer;
+}
+
+inputbar {
+  margin: 0px 10px;
+  spacing: 0.4em;
+  border-color: var(darker);
+  border: 5px;
+  background-color: var(darker);
+  children: [entry,overlay,case-indicator];
+}
+
+
+listview, message {
+  padding: 0.5em;
+  border-color: var(darker);
+  border:        5px;
+  border-radius: 10px;
+  background-color: var(darker);
+
+  columns: 1;
+  lines:   8;
+}
+listview {
+  border:       0px 5px 5px 5px;
+  border-radius: 10px 10px 10px 10px;
+  spacing: 10px;
+  background-color: var(darker);
+  border-color:     var(darker);
+  crollbar:    true;
+}
+
+
+element {
+    border:  5px;
+    border-radius: 5px;
+    padding: 2px;
+    border-color: var(darker);
+}
+element-text {
+    background-color: var(darker);
+    text-color:       #FFFFFF;
+    font: "Fira Code Medium";
+}
+
+element normal.normal {
+    background-color: var(darker);
+    text-color:       var(lighter);
+}
+element.normal.urgent {
+    background-color: var(darker);
+    text-color:       var(lighter);
+}
+element.normal.active {
+    background-color: var(darker);
+    text-color:       var(lighter);
+}
+element.selected.normal {
+    background-color: var(lighter);
+    border-color: var(lighter);
+    text-color:       var(lighter);
+}
+element.selected.urgent {
+    background-color: var(lighter);
+    border-color: var(lighter);
+    text-color:       var(lighter);
+}
+element.selected.active {
+    background-color: var(lighter);
+    border-color: var(lighter);
+    text-color:       var(lighter);
+}
+element.alternate.normal {
+    background-color: var(darker);
+    text-color:       var(lighter);
+}
+element.alternate.urgent {
+    background-color: var(darker);
+    text-color:       var(lighter);
+}
+element.alternate.active {
+    background-color: var(darker);
+    text-color:       var(lighter);
+}
+
+
+element-text.selected.normal {
+    background-color: var(lighter);
+    border-color: var(lighter);
+    text-color:       var(darker);
+    font: "Fira Code Medium";
+}
+element-text.selected.urgent {
+    background-color: var(lighter);
+    border-color: var(lighter);
+    text-color:       var(darker);
+    font: "Fira Code Medium";
+}
+element-text.selected.active {
+    background-color: var(lighter);
+    border-color: var(lighter);
+    text-color:       var(darker);
+    font: "Fira Code Medium";
+}
+
+scrollbar {
+    width:        4px ;
+    border:       0;
+    handle-color: var(lighter);
+    handle-width: 8px ;
+    border-radius: 2px 2px 2px 2px;
+    padding:      0;
+}
+
+mode-switcher {
+    border:  0px;
+    spacing: 0px;
+    expand: true;
+}
+button {
+    text-color: var(lighter);
+    border:       0px 0px 5px ;
+    border-color: var(darker);
+    border-radius:    10px 10px 0 0;
+    background-color: var(darker);
+    horizontal-align: 0.5;
+}
+button selected.normal {
+    text-color: var(lighter);
+    margin: 0px;
+    padding: 0px;
+    border:     5px 5px 5px 5px ;
+    border-color: var(darker);
+    border-radius:    10px 10px 10px 10px;
+    background-color: #202222;
+}
+
+entry {
+    placeholder: "Search here";
+    placeholder-color: var(lighter);
+    border-color: #202222;
+    background-color: #202222;
+    border:        10px;
+    border-radius: 2px 2px 2px 2px;
+    text-color: var(lighter);
+  }
