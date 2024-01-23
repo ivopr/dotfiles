@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
 
@@ -11,3 +11,4 @@ xset -dpms
 
 # set keyboard repeat rate
 xset r rate 350 60
+    
