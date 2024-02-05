@@ -2,6 +2,7 @@
 
 /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
 
+picom &
 nm-applet &
 
 # set display timeout, sleep, and poweroff

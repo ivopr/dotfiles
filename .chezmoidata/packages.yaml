@@ -11,6 +11,7 @@ packages:
     - 'nerd-fonts'
     - 'noto-fonts-cjk'
     - 'noto-fonts-emoji'
+    - 'picom'
     - 'polkit-gnome'
     - 'qtile'
     - 'rofi'
