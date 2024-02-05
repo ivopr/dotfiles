@@ -6,6 +6,7 @@ packages:
     - 'docker'
     - 'dunst'
     - 'github-cli'
+    - 'nemo'
     - 'nerd-fonts'
     - 'noto-fonts-cjk'
     - 'noto-fonts-emoji'

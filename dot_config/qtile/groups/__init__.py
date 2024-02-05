@@ -35,5 +35,6 @@ dgroups_app_rules = [
     Rule(Match(wm_class="kitty"), group="2"),
     Rule(Match(wm_class="google-chrome"), group="3"),
     Rule(Match(wm_class="discord"), group="4"),
+    Rule(Match(wm_class="nemo"), group="5"),
     Rule(Match(wm_class="spotify"), group="7"),
 ]
