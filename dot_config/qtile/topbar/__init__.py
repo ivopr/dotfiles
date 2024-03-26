@@ -76,6 +76,13 @@ topbar = bar.Bar(
             foreground=colors["foreground"],
         ),
         small_spacer,
+        widget.PulseVolume(
+            background=colors["background"],
+            foreground=colors["foreground"],
+            font="Fira Code Bold",
+            fontsize=16
+        ),
+        small_spacer,
         widget.Clock(
             format="%A, %d/%m/%Y %H:%M",
             background=colors["background"],

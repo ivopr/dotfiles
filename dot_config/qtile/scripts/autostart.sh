@@ -4,6 +4,7 @@
 
 picom &
 nm-applet &
+/home/ivopr/Applications/OneDriveGUI-1.0.3_fix150-x86_64_829883def23935cf5ac79d8db1189ef3.AppImage &
 
 # set display timeout, sleep, and poweroff
 xset s off

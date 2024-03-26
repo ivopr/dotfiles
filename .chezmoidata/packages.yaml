@@ -26,5 +26,6 @@ packages:
     - 'google-chrome'
     - 'numix-circle-icon-theme-git'
     - 'visual-studio-code-bin'
+    - 'python-pulsectl-asyncio'
     - 'spotify'
     - 'zsh-theme-powerlevel10k-git'
