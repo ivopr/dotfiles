@@ -13,7 +13,8 @@ zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}'
 export VOLTA_HOME="$HOME/.volta"
 export PATH="$VOLTA_HOME/bin:$PATH"
 export ANDROID_HOME="$HOME/Android/Sdk"
+export VCPKG_ROOT="$HOME/vcpkg"
 
 alias dps="docker ps --format \"table {{.Names}}\t{{.Image}}\t{{.Ports}}\t{{.Status}}\""
-
+alias otcbuild="cmake -DCMAKE_TOOLCHAIN_FILE=~/vcpkg/scripts/buildsystems/vcpkg.cmake ~/Documents/side/otclient --preset"
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh

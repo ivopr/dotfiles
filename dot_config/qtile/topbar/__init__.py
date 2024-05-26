@@ -76,7 +76,7 @@ topbar = bar.Bar(
             foreground=colors["foreground"],
         ),
         small_spacer,
-        widget.PulseVolume(
+        widget.Volume(
             background=colors["background"],
             foreground=colors["foreground"],
             font="Fira Code Bold",
